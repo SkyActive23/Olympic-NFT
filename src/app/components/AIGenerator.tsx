@@ -1,7 +1,6 @@
 "use client";
 
-import { ConnectButton, MediaRenderer, useActiveAccount, useReadContract } from "thirdweb/react";
-import { client } from "../client";
+import { MediaRenderer, useActiveAccount, useReadContract } from "thirdweb/react";
 import { useState } from "react";
 import { NFTCollection } from "./NFTCollection";
 import { getNFTs } from "thirdweb/extensions/erc721";
@@ -63,12 +62,6 @@ export const AIGenerator = () => {
         }
     };
 
-    // const mintNFT = async (imageUrl: string) => {
-    //     // Implement the minting logic using the thirdweb SDK
-    //     // Example:
-    //     // await contract.call("mint", account.address, imageUrl);
-    // };
-
     if (account) {
         return (
             <div style={{
@@ -77,9 +70,6 @@ export const AIGenerator = () => {
                 alignItems: "center",
                 padding: "20px",
             }}>
-                <ConnectButton 
-                    client={client}
-                />
                 <div>
                     <div style={{ margin: "20px 0"}}>
                         {generatedImage ? (
@@ -98,6 +88,7 @@ export const AIGenerator = () => {
                                 height: "300px",
                                 border: "1px dashed #777",
                                 borderRadius: "10px",
+                                backgroundColor: "lightgray",
                                 display: "flex",
                                 justifyContent: "center",
                                 alignItems: "center",
@@ -195,7 +186,7 @@ export const AIGenerator = () => {
     } else {
         return (
             <div style={{ display: "flex", justifyContent: "center", padding: "20px" }}>
-                <ConnectButton client={client} />
+                Please connect your wallet.
             </div>
         );
     }

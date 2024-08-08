@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { ThirdwebProvider } from "thirdweb/react";
+import { Navbar } from "./components/Navbar"; // Adjust the import path if necessary
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,6 +20,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <ThirdwebProvider>
+          <Navbar /> {/* Add Navbar here */}
           {children}
         </ThirdwebProvider>
       </body>

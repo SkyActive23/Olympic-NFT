@@ -16,7 +16,7 @@ export const NFTCollection = ({ nfts }: NFTCollectionProps) => {
             alignItems: "center",
             margin: "20px",
         }}>
-            <h3>AI Generations:</h3>
+            <h3 style={{ color: '#fff' }}>AI Generations:</h3>
             <div style={{
                 display: "flex",
                 flexDirection: "row",
@@ -43,7 +43,7 @@ export const NFTCollection = ({ nfts }: NFTCollectionProps) => {
                         />
                     </div>
                 )) : (
-                    <p>No NFTs found</p>
+                    <p style={{ color: '#fff' }}>No NFTs found</p>
                 )}
             </div>
         </div>

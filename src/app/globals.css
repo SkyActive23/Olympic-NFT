@@ -1,6 +1,64 @@
+/* globals.css */
+
 body {
   font-family: 'Roboto', sans-serif;
   margin: 0;
   padding: 0;
-  background-color: #a8a9ad;
+  background-color: #616263;
+  transition: background-color 0.5s ease; /* Smooth transition for background color */
+  color: 'Yellow';
+}
+
+
+@keyframes boxIn {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes boxOut {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0);
+  }
+}
+
+.box-in {
+  animation: boxIn 0.5s forwards;
+  animation-delay: 0.5s;
+}
+
+.box-out {
+  animation: boxOut 0.5s forwards;
+}
+
+@keyframes blackoutIn {
+  0% {
+    background-color: transparent;
+  }
+  100% {
+    background-color: black;
+  }
+}
+
+@keyframes blackoutOut {
+  0% {
+    background-color: black;
+  }
+  100% {
+    background-color: transparent;
+  }
+}
+
+.blackout-in {
+  animation: blackoutIn 0.5s forwards;
+}
+
+.blackout-out {
+  animation: blackoutOut 0.5s forwards;
 }
