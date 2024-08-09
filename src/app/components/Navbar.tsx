@@ -91,7 +91,7 @@ export const Navbar = () => {
           </div>
         </Link>
         <p style={{color: 'lightgray', fontSize: '20px', fontWeight: '500'}}>|</p>
-        <Link href="#" passHref>
+        <Link href="/NFTGallery" passHref>
           <div 
             style={{
               display: 'flex',
@@ -122,7 +122,7 @@ export const Navbar = () => {
           </div>
         </Link>
         <p style={{color: 'lightgray', fontSize: '20px', fontWeight: '500'}}>|</p>
-        <Link href="#" passHref>
+        <Link href="IPFS" passHref>
           <div 
             style={{
               display: 'flex',
