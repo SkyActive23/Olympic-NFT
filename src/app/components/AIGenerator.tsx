@@ -13,6 +13,7 @@ export const AIGenerator = () => {
 
     const [country, setCountry] = useState("");
     const [sport, setSport] = useState("");
+    const [gender, setGender] = useState("Men's"); // Default to "Men's"
     const [generatedImage, setGeneratedImage] = useState<string | null>(null);
     const [isGenerating, setIsGenerating] = useState(false);
     const [isMinting, setIsMinting] = useState(false);
@@ -28,7 +29,7 @@ export const AIGenerator = () => {
         e.preventDefault();
         setIsGenerating(true);
 
-        const imagePrompt = `${country} ${sport} Olympics`;
+        const imagePrompt = `${country} ${sport} ${gender} Olympics`;
 
         try {
             const response = await fetch('/api/generate', {
@@ -141,6 +142,33 @@ export const AIGenerator = () => {
                                             <option key={sport} value={sport}>{sport}</option>
                                         ))}
                                     </select>
+                                {/* Gender Selection Dial */}
+                                <div style={{
+                                    display: "flex",
+                                    justifyContent: "center",
+                                    margin: "20px 0",
+                                }}>
+                                    <label style={{ marginRight: "10px", fontWeight: "bold" }}>
+                                        <input 
+                                            type="radio" 
+                                            value="Men's" 
+                                            checked={gender === "Men's"} 
+                                            onChange={(e) => setGender(e.target.value)} 
+                                            style={{ marginRight: "5px" }} 
+                                        />
+                                        Men's
+                                    </label>
+                                    <label style={{ marginLeft: "10px", fontWeight: "bold" }}>
+                                        <input 
+                                            type="radio" 
+                                            value="Women's" 
+                                            checked={gender === "Women's"} 
+                                            onChange={(e) => setGender(e.target.value)} 
+                                            style={{ marginRight: "5px" }} 
+                                        />
+                                        Women's
+                                    </label>
+                                </div>
                                     <button
                                         type="submit"
                                         disabled={isGenerating || isMinting || !country || !sport}

@@ -39,6 +39,7 @@ export const sports: string[] = [
     "Table Tennis",
     "Taekwondo",
     "Tennis",
+    "Track and Field",
     "Trampoline Gymnastics",
     "Triathlon",
     "Volleyball",

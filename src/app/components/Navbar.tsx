@@ -5,12 +5,29 @@ import { useState } from "react";
 import { ConnectButton } from "thirdweb/react";
 import { client } from "../client";
 import { usePathname } from "next/navigation";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faHome, faImage, faCloud } from "@fortawesome/free-solid-svg-icons"; // Import your icons here
 
 export const Navbar = () => {
   const pathname = usePathname();
-  
+
+  // If the current page is /landing, only show the logo
   if (pathname === "/landing") {
-    return null;
+    return (
+      <header style={{
+        position: 'sticky',
+        top: 0,
+        display: 'flex',
+        alignItems: 'center',
+        padding: '10px',
+        backgroundColor: 'gray',
+        borderBottom: '4px solid lightgray',
+        boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)',
+        zIndex: 1000,
+      }}>
+        <img src="/logo.jpg" alt="logo" height={50}/>
+      </header>
+    );
   }
 
   const [hovered, setHovered] = useState<{ home: boolean; nft: boolean; ipfs: boolean }>({
@@ -41,65 +58,99 @@ export const Navbar = () => {
       zIndex: 1000,
     }}>
       <nav style={{ display: 'flex', alignItems: 'center', gap: '24px' }}>
+        <img src="/logo.jpg" alt="logo" height={50}/>
         <p style={{color: 'lightgray', fontSize: '20px', fontWeight: '500'}}>|</p>
         <Link href="/" passHref>
-          <button 
+          <div 
             style={{
-              fontSize: '20px',
-              fontWeight: '500',
-              color: hovered.home ? 'lightgray' : 'white',
-              backgroundColor: 'transparent',
-              border: 'none',
-              textDecoration: 'none',
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
               cursor: 'pointer',
-              padding: 0,
-              transition: 'color 0.3s ease',
+              position: 'relative',
             }}
             onMouseEnter={() => handleMouseEnter('home')}
             onMouseLeave={() => handleMouseLeave('home')}
           >
-            Home
-          </button>
+            <FontAwesomeIcon icon={faHome} size="2x" color={hovered.home ? 'white' : 'lightgray'} />
+            {hovered.home && (
+              <span style={{
+                position: 'absolute',
+                top: '40px',
+                backgroundColor: 'black',
+                color: 'white',
+                padding: '5px 10px',
+                borderRadius: '5px',
+                fontSize: '14px',
+                whiteSpace: 'nowrap',
+                zIndex: 1000,
+              }}>
+                Home
+              </span>
+            )}
+          </div>
         </Link>
         <p style={{color: 'lightgray', fontSize: '20px', fontWeight: '500'}}>|</p>
         <Link href="#" passHref>
-          <button 
+          <div 
             style={{
-              fontSize: '20px',
-              fontWeight: '500',
-              color: hovered.nft ? 'lightgray' : 'white',
-              backgroundColor: 'transparent',
-              border: 'none',
-              textDecoration: 'none',
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
               cursor: 'pointer',
-              padding: 0,
-              transition: 'color 0.3s ease',
+              position: 'relative',
             }}
             onMouseEnter={() => handleMouseEnter('nft')}
             onMouseLeave={() => handleMouseLeave('nft')}
           >
-            NFT
-          </button>
+            <FontAwesomeIcon icon={faImage} size="2x" color={hovered.nft ? 'white' : 'lightgray'} />
+            {hovered.nft && (
+              <span style={{
+                position: 'absolute',
+                top: '40px',
+                backgroundColor: 'black',
+                color: 'white',
+                padding: '5px 10px',
+                borderRadius: '5px',
+                fontSize: '14px',
+                whiteSpace: 'nowrap',
+                zIndex: 1000,
+              }}>
+                NFT Gallery
+              </span>
+            )}
+          </div>
         </Link>
         <p style={{color: 'lightgray', fontSize: '20px', fontWeight: '500'}}>|</p>
         <Link href="#" passHref>
-          <button 
+          <div 
             style={{
-              fontSize: '20px',
-              fontWeight: '500',
-              color: hovered.ipfs ? 'lightgray' : 'white',
-              backgroundColor: 'transparent',
-              border: 'none',
-              textDecoration: 'none',
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
               cursor: 'pointer',
-              padding: 0,
-              transition: 'color 0.3s ease',
+              position: 'relative',
             }}
             onMouseEnter={() => handleMouseEnter('ipfs')}
             onMouseLeave={() => handleMouseLeave('ipfs')}
           >
-            IPFS
-          </button>
+            <FontAwesomeIcon icon={faCloud} size="2x" color={hovered.ipfs ? 'white' : 'lightgray'} />
+            {hovered.ipfs && (
+              <span style={{
+                position: 'absolute',
+                top: '40px',
+                backgroundColor: 'black',
+                color: 'white',
+                padding: '5px 10px',
+                borderRadius: '5px',
+                fontSize: '14px',
+                whiteSpace: 'nowrap',
+                zIndex: 1000,
+              }}>
+                IPFS
+              </span>
+            )}
+          </div>
         </Link>
         <p style={{color: 'lightgray', fontSize: '20px', fontWeight: '500'}}>|</p>
       </nav>

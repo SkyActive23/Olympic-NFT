@@ -51,13 +51,17 @@ export default function Landing() {
   };
 
   return (
-    <div className={boxIn ? 'box-in' : 'box-out'} style={{ 
+    <div style={{ 
         display: 'flex', 
         flexDirection: 'column', 
         alignItems: 'center', 
         justifyContent: 'center', 
         height: '100vh', 
         position: 'relative',
+        backgroundImage: `url('/first-place-medal.jpg')`,  // Background image path
+        backgroundSize: 'cover',  // Cover the entire page
+        backgroundPosition: 'center',  // Center the background image
+        backgroundRepeat: 'no-repeat',  // Prevent repetition of the image
     }}>
         {blackout && <div className="blackout-in" style={{ 
             position: 'absolute', 
@@ -68,8 +72,8 @@ export default function Landing() {
             backgroundColor: 'black', 
             zIndex: 10 
         }}></div>}
-          <div style={styleTopRight} className="moveToTopLeft"></div>
-          <div style={styleBottomLeft} className="moveToBottomRight"></div>
+          {/* <div style={styleTopRight} className="moveToTopLeft"></div>
+          <div style={styleBottomLeft} className="moveToBottomRight"></div> */}
         <div style={{
           display: 'flex', 
           flexDirection: 'column', 
@@ -87,7 +91,7 @@ export default function Landing() {
           zIndex: 1,
         }}>
             <h1 style={{color: '#fff'}}>Connect & Collect Iconic Olympic NFTs</h1>
-            <p style={{color: '#fff'}}>Immerse yourself in the rich history and legacy of the Olympic Games</p>
+            <p style={{color: '#fff', paddingBottom: '15px'}}>Immerse yourself in the rich history and legacy of the Olympic Games</p>
             <ConnectEmbed client={client} />
         </div>
     </div>
