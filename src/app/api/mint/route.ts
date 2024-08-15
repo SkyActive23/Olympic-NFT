@@ -1,21 +1,14 @@
 import { NextRequest, NextResponse } from "next/server";
 import { nftCollectionContractAddress } from "../../utils/contract";
 
-// Hardcoding the environment variables for debugging
-const ENGINE_URL = "https://383987b8.engine-usw2.thirdweb.com";
-const THIRDWEB_SECRET_KEY = "eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiIweEYyRWY4NUU1MDRjQzc1ZmIyM0ZBQThFNjVDRUFCMDgzRTc2NDFlM2EiLCJzdWIiOiIweDU4MTY2QkJFOEFCZDYyNjBCNzQ5ZDExMTUzMzE2Q2YwNDBGNDE2MjYiLCJhdWQiOiJ0aGlyZHdlYi5jb20iLCJleHAiOjQ4NzY5MzYwOTksIm5iZiI6MTcyMzMzNjA5OSwiaWF0IjoxNzIzMzM2MDk5LCJqdGkiOiJlODY2YTEyYi01MDdkLTQ1MDEtYmYzNy0xZTU4NmNmODVlZGEiLCJjdHgiOnsicGVybWlzc2lvbnMiOiJBRE1JTiJ9fQ.MHhmZjliYTRhOTYyOTJlNzI5NzFiMDhlNWRiOGZjYWY5NzYxNTdkM2U3ODJlMDE4NzMxNDBiYTc0YzUyNjVjOWI3Mjg4MTU5MWVhMWE4NWRhMDZjMGIzMWE5OGY0MmI4ODQyNDVkMzY5NmNjMmQ0NmM3NTJmZjdiOTE5NjhjODMwOTFi";
-const BACKEND_WALLET_ADDRESS = "0x58166BBE8ABd6260B749d11153316Cf040F41626";
-const CHAIN_ID = "11155111";
+const ENGINE_URL = process.env.ENGINE_URL!;
+const THIRDWEB_SECRET_KEY = process.env.THIRDWEB_SECRET_KEY!;
+const BACKEND_WALLET_ADDRESS = process.env.BACKEND_WALLET_ADDRESS!;
+const CHAIN_ID = process.env.CHAIN_ID!;
 
 export async function POST(req: NextRequest) {
     console.log("POST /api/mint called");
 
-    // Logging the environment variables to check if they are being called properly
-    console.log("Environment Variables:");
-    console.log("ENGINE_URL:", ENGINE_URL);
-    console.log("THIRDWEB_SECRET_KEY:", THIRDWEB_SECRET_KEY ? "*****" : "undefined");
-    console.log("BACKEND_WALLET_ADDRESS:", BACKEND_WALLET_ADDRESS);
-    console.log("CHAIN_ID:", CHAIN_ID);
 
     const { nftImage, address } = await req.json();
     console.log("Request body:", { nftImage, address });
@@ -63,4 +56,3 @@ export async function POST(req: NextRequest) {
         return NextResponse.json({ error: "Failed to mint NFT" }, { status: 500 });
     }
 }
-
